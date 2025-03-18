@@ -1,9 +1,8 @@
 #include <stdio.h>
 
-// Function to allocate memory using Worst Fit, Best Fit, and First Fit
 void allocateMemory(int algo, int blocks[], int m, int processes[], int n)
 {
-    int alloc[n]; // Stores block assigned to each process
+    int alloc[n];
     for (int i = 0; i < n; i++) alloc[i] = -1;
 
     for (int i = 0; i < n; i++)
@@ -13,9 +12,9 @@ void allocateMemory(int algo, int blocks[], int m, int processes[], int n)
         {
             if (blocks[j] >= processes[i])
             {
-                if (algo == 0 && (bestIdx == -1 || blocks[j] > blocks[bestIdx])) // Worst Fit
+                if (algo == 0 && (bestIdx == -1 || blocks[j] > blocks[bestIdx])) 
                     bestIdx = j;
-                else if (algo == 1 && (bestIdx == -1 || blocks[j] < blocks[bestIdx])) // Best Fit
+                else if (algo == 1 && (bestIdx == -1 || blocks[j] < blocks[bestIdx])) 
                     bestIdx = j;
                 else if (algo == 2 && bestIdx == -1) // First Fit
                     bestIdx = j;
@@ -28,7 +27,7 @@ void allocateMemory(int algo, int blocks[], int m, int processes[], int n)
         }
     }
 
-    // Print results
+    
     printf("%s Fit:\n", (algo == 0) ? "Worst" : (algo == 1) ? "Best" : "First");
     for (int i = 0; i < n; i++)
     {
@@ -59,7 +58,7 @@ int main()
 
     for (int algo = 0; algo < 3; algo++)
     {
-        for (int i = 0; i < m; i++) blocks[i] = orig_blocks[i]; // Reset block sizes
+        for (int i = 0; i < m; i++) blocks[i] = orig_blocks[i]; 
         allocateMemory(algo, blocks, m, processes, n);
     }
 

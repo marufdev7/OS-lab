@@ -12,7 +12,6 @@ int main()
     printf("Enter page sequence: ");
     for (int i = 0; i < n; i++) scanf("%d", &pages[i]);
 
-    // FIFO Page Replacement
     faults = 0;
     pos = 0;
     for (int i = 0; i < n; i++)
@@ -35,7 +34,6 @@ int main()
     }
     printf("FIFO: Page Faults = %d\n", faults);
 
-    // LRU Page Replacement
     faults = 0;
     int time[frames], least_recent;
     for (int i = 0; i < frames; i++) frame[i] = -1, time[i] = -1;
@@ -63,7 +61,6 @@ int main()
     }
     printf("LRU: Page Faults = %d\n", faults);
 
-    // Optimal Page Replacement
     faults = 0;
     for (int i = 0; i < frames; i++) frame[i] = -1;
     for (int i = 0; i < n; i++)
